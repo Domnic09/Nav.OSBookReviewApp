@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace NavOS.Basecode.Services.ServiceModels
 {
-    public class UserViewModel
+    public class AdminViewModel
     {
-        [Required(ErrorMessage = "Username is required.")]
-        public string UserId { get; set; }
+        [Required(ErrorMessage = "Email is required.")]
+        public string AdminEmail { get; set; }
 
         [Required(ErrorMessage = "Name is required.")]
-        public string Name { get; set; }
+        public string AdminName { get; set; }
 
         [Required(ErrorMessage = "Password is required.")]
         public string Password { get; set; }

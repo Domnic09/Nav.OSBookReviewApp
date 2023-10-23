@@ -117,9 +117,9 @@ namespace NavOS.Basecode.Resources.Views {
         /// <summary>
         ///   Looks up a localized string similar to UserId.
         /// </summary>
-        public static string UserId {
+        public static string AdminEmail {
             get {
-                return ResourceManager.GetString("UserId", resourceCulture);
+                return ResourceManager.GetString("AdminEmail", resourceCulture);
             }
         }
     }

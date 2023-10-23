@@ -25,7 +25,7 @@ namespace NavOS.Basecode.AdminApp
         {
             public AutoMapperProfileConfiguration()
             {
-                CreateMap<UserViewModel, User>();
+                CreateMap<AdminViewModel, User>();
             }
         }
     }

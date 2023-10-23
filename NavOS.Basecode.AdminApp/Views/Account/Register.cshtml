@@ -1,5 +1,5 @@
 ﻿@using NavOS.Basecode.Services.ServiceModels
-@model UserViewModel
+@model AdminViewModel
 @{
     ViewBag.LoginView = true;
     ViewData["Title"] = "Register Page";
@@ -21,16 +21,16 @@
 
                         <form method="post" action="/Account/Register">
                             <div class="form-outline mb-4">
-                                <label class="form-label" for="userId">UserId</label>
-                                <input type="text" id="userId" class="form-control"
-                                       asp-for="UserId" placeholder="Enter userid" />
-                                <span asp-validation-for="UserId" class="text-danger"></span>
+                                <label class="form-label" for="AdminEmail">Email</label>
+                                <input type="text" id="adminEmail" class="form-control"
+                                       asp-for="AdminEmail" placeholder="Enter email" />
+                                <span asp-validation-for="AdminEmail" class="text-danger"></span>
                             </div>
                             <div class="form-outline mb-4">
-                                <label class="form-label" for="name">Name</label>
-                                <input type="text" id="name" class="form-control"
-                                       asp-for="Name" placeholder="Enter name" />
-                                <span asp-validation-for="Name" class="text-danger"></span>
+                                <label class="form-label" for="AdminNAme">Admin Name</label>
+                                <input type="text" id="adminName" class="form-control"
+                                       asp-for="AdminName" placeholder="Enter name" />
+                                <span asp-validation-for="AdminName" class="text-danger"></span>
                             </div>
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="password">Password</label>

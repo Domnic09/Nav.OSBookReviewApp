@@ -36,5 +36,6 @@ namespace NavOS.Basecode.AdminApp.Controllers
         {
             return View();
         }
+
     }
 }

@@ -9,9 +9,9 @@ namespace NavOS.Basecode.AdminApp.Models
     public class LoginViewModel
     {
         /// <summary>ユーザーID</summary>
-        [JsonPropertyName("userId")]
-        [Required(ErrorMessage = "UserId is required.")]
-        public string UserId { get; set; }
+        [JsonPropertyName("AdminEmail")]
+        [Required(ErrorMessage = "Email is required.")]
+        public string AdminEmail { get; set; }
         /// <summary>パスワード</summary>
         [JsonPropertyName("password")]
         [Required(ErrorMessage = "Password is required.")]

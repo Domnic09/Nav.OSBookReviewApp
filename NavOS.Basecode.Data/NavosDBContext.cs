@@ -17,69 +17,134 @@ namespace NavOS.Basecode.Data
         {
         }
 
+        public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<Book> Books { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Genre> Genres { get; set; }
+        public virtual DbSet<Review> Reviews { get; set; }
+
+       
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Admin>(entity =>
+            {
+                entity.ToTable("Admin");
+
+                entity.Property(e => e.AdminId)
+                    .HasMaxLength(50)
+                    .HasColumnName("AdminID");
+
+                entity.Property(e => e.AdminEmail)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.AdminName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.ContactNo)
+                    .IsRequired()
+                    .HasMaxLength(11);
+
+                entity.Property(e => e.Dob)
+                    .HasColumnType("date")
+                    .HasColumnName("DOB");
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Role)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Token).HasMaxLength(100);
+            });
+
             modelBuilder.Entity<Book>(entity =>
             {
                 entity.ToTable("Book");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.BookId)
+                    .HasMaxLength(50)
+                    .HasColumnName("BookID");
+
+                entity.Property(e => e.AddedBy)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.Author)
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.CreatedBy)
+                entity.Property(e => e.BookTitle)
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Description).IsRequired();
+                entity.Property(e => e.Date).HasColumnType("date");
 
-                entity.Property(e => e.Title)
+                entity.Property(e => e.Genre)
                     .IsRequired()
                     .HasMaxLength(50);
+
+                entity.Property(e => e.Status)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Summary).IsRequired();
 
                 entity.Property(e => e.UpdatedBy)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Volume)
                     .IsRequired()
                     .HasMaxLength(50);
             });
 
-            modelBuilder.Entity<User>(entity =>
+            modelBuilder.Entity<Genre>(entity =>
             {
-                entity.HasIndex(e => e.UserId, "UQ__Users__1788CC4D3DFAC077")
-                    .IsUnique();
+                entity.ToTable("Genre");
 
-                entity.Property(e => e.CreatedBy)
+                entity.Property(e => e.GenreId)
+                    .HasMaxLength(50)
+                    .HasColumnName("GenreID");
+
+                entity.Property(e => e.GenreDescription)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.GenreName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<Review>(entity =>
+            {
+                entity.Property(e => e.ReviewId)
+                    .HasMaxLength(50)
+                    .HasColumnName("ReviewID");
+
+                entity.Property(e => e.BookId)
                     .IsRequired()
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .HasColumnName("BookID");
 
-                entity.Property(e => e.CreatedTime).HasColumnType("datetime");
+                entity.Property(e => e.ReviewText).IsRequired();
 
-                entity.Property(e => e.Name)
+                entity.Property(e => e.UserEmail)
                     .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .HasMaxLength(50);
 
-                entity.Property(e => e.Password)
+                entity.Property(e => e.UserName)
                     .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .HasMaxLength(50);
 
-                entity.Property(e => e.UpdatedBy)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.UpdatedTime).HasColumnType("datetime");
-
-                entity.Property(e => e.UserId)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.HasOne(d => d.Book)
+                    .WithMany(p => p.Reviews)
+                    .HasForeignKey(d => d.BookId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Reviews_Reviews");
             });
 
             OnModelCreatingPartial(modelBuilder);

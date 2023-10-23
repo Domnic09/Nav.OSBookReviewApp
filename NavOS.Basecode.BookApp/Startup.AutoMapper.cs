@@ -25,7 +25,7 @@ namespace NavOS.Basecode.BookApp
         {
             public AutoMapperProfileConfiguration()
             {
-                CreateMap<UserViewModel, User>();
+                CreateMap<AdminViewModel, Admin>();
             }
         }
     }
