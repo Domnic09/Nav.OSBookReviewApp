@@ -35,10 +35,12 @@ namespace NavOS.Basecode.AdminApp
             // Services
             this._services.TryAddSingleton<TokenValidationParametersFactory>();
             this._services.AddScoped<IAdminService, AdminService>();
-          
+            this._services.AddScoped<IBookService, BookService>();
+
 
             // Repositories
             this._services.AddScoped<IAdminRepository, AdminRepository>();
+            this._services.AddScoped<IBookRepository, BookRepository>();
 
             // Manager Class
             this._services.AddScoped<SignInManager>();

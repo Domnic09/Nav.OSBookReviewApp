@@ -1,0 +1,37 @@
+﻿@model NavOS.Basecode.Services.ServiceModels.BookViewModel;
+
+<div class="pt-5">
+
+    <h1>Edit Book</h1>
+
+    <form method="post" asp-action="Edit">
+        <input type="hidden" class="form-control" asp-for="BookId">
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control" asp-for="BookTitle">
+        </div>
+        <div class="form-group">
+            <label>Summary</label>
+            <textarea class="form-control" asp-for="Summary"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Author</label>
+            <input type="text" class="form-control" asp-for="Author">
+        </div>
+        <div class="form-group">
+            <label>Genre</label>
+            <input type="text" class="form-control" asp-for="Genre">
+        </div>
+        <div class="form-group">
+            <label>Status</label>
+            <input type="text" class="form-control" rows="3" asp-for="Status">
+        </div>
+        <div class="form-group">
+            <label>Volume</label>
+            <input type="text" class="form-control" asp-for="Volume">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>

@@ -6,6 +6,10 @@
              style="width: 185px;" alt="logo"
              onclick="window.location.href = '@Url.Action("Index", "Home")';">
     </div>
+    <div class="navbar-container ">
+        <a asp-action="Index" asp-controller="Book" class="navbarstyle">Books</a>
+        <a asp-action="Create" asp-controller="Book" class="navbarstyle">Create Book</a>
+    </div>
     <div class="logosec">
         @HttpContextAccessor.HttpContext.Session.GetString("AdminName")
         <div class="mr-20 hover-pointer" style="position: relative">
