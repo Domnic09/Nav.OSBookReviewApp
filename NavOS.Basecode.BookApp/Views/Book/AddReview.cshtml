@@ -1,0 +1,48 @@
+﻿@model NavOS.Basecode.Services.ServiceModels.ReviewViewModel
+
+<style>
+    .star-rating {
+        font-size: 25px;
+        cursor: pointer;
+    }
+
+    .yellow-star {
+        color: yellow !important;
+    }
+</style>
+
+<!--REVIEWS-->
+<form method="post" enctype="multipart/form-data" asp-action="AddReview">
+    <input type="hidden" name="BookId" value="@Model.BookId" asp-for="BookId" />
+    <h7 id="reviewsLabel" class="w3-margin-bottom">REVIEWS</h7>
+    <div id="leftRightPadding" class="w3-border w3-padding-32">
+        <div class="w3-row">
+            <div class="w3-col" style="width: 120px;">
+                <span id="reviewHere">Review here </span>
+            </div>
+            <div id="buttonIcon" class="w3-col" style="width: 200px; margin-top:-10px; margin-left:-20px;">
+                <span data-value="1" class="star-rating">&#9733;</span>
+                <span data-value="2" class="star-rating">&#9733;</span>
+                <span data-value="3" class="star-rating">&#9733;</span>
+                <span data-value="4" class="star-rating">&#9733;</span>
+                <span data-value="5" class="star-rating">&#9733;</span>
+                <input type="hidden" name="Rate" id="Rate" value="0" asp-for="Rate" />
+            </div>
+        </div>
+        <!--REVIEW INPUT-->
+        <div id="reviewInput" class="w3-border">
+            <textarea rows="6" class="w3-justify w3-text-white" style="outline:none;" asp-for="ReviewText"></textarea>
+        </div>
+        <br>
+        <div id="inputForm" class="w3-row">
+            <div class="w3-threequarter">
+                <input class="w3-margin-bottom w3-margin-right" style="outline:none;" type="text" asp-for="UserName" placeholder="NAME (Required)" required>
+                <input class="w3-margin-bottom" type="email" style="outline:none;" asp-for="UserEmail" placeholder="EMAIL (Required)" required>
+            </div>
+            <div class="w3-quarter">
+                <button class="w3-right" type="submit" id="send">SEND</button>
+            </div>
+        </div>
+    </div>
+</form>
+

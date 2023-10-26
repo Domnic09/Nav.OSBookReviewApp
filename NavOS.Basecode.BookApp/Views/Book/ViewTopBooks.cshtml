@@ -1,22 +1,18 @@
-﻿@{
-    ViewData["Title"] = "BookDetails";
+﻿@using NavOS.Basecode.Services.ServiceModels;
+@model List<NavOS.Basecode.Services.ServiceModels.BookViewModel>
+@{
+    ViewData["Title"] = "New Books";
 
-    List<string> dummyData = new List<string> { "Card 1", "Card 2", "Card 3", "Card 4", "Card 5", "Card 6", "Card 7", "Card 8", "Card 9", "Card 10", "Card 11", "Card 12", "Card 13", "Card 14", "Card 15" , "Card 16" , "Card 17", "Card 18", "Card 19", "Card 20", "Card 21" };
-
-    // Define page size and current page.
-    int pageSize = 10; 
+    int pageSize = 10;
     int currentPage = ViewContext.HttpContext.Request.Query["page"].FirstOrDefault() != null ? int.Parse(ViewContext.HttpContext.Request.Query["page"]) : 1;
 
-    // Calculate the total number of pages based on the dummy data and page size.
-    int totalItems = dummyData.Count;
+    int totalItems = Model.Count;
     int totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
 
-    // Calculate the index to start and end the data.
     int startIndex = (currentPage - 1) * pageSize;
     int endIndex = Math.Min(startIndex + pageSize, totalItems);
 
-    // Get the data for the current page.
-    List<string> pageData = dummyData.GetRange(startIndex, endIndex - startIndex);
+    List<BookViewModel> pageData = Model.GetRange(startIndex, endIndex - startIndex);
 }
 
 <style>
@@ -29,13 +25,13 @@
     }
 
     .pagination .page-item.active a {
-        background-color: #00A651; 
-        box-shadow:none;
+        background-color: #00A651;
+        box-shadow: none;
     }
 
     .pagination .page-item:not(.active) a {
         background-color: transparent;
-        color:#000;
+        color: #000;
     }
 
     .pagination .page-item a {
@@ -44,7 +40,7 @@
 
     .pagination .page-item a:hover {
         background-color: #00A651;
-        color:white;
+        color: white;
     }
 
 </style>
@@ -90,16 +86,11 @@
             </div>
         </div>
         <!-- Search -->
-        <div class="row mt-3 d-flex justify-content-center mx-1">
-            <div class="col-md-12">
-                <div class="input-group">
-                    <input type="search" id="form1" class="form-control" placeholder="Search" aria-label="Search" style="box-shadow:none;" />
-                    <button class="btn btn-primary" type="button" style="box-shadow:none;">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
+        <form asp-controller="Book" asp-action="ViewTopBooks" method="get" class="mt-3">
+            <div class="input-group">
+                <input type="text" name="searchQuery" class="form-control" placeholder="Search Genre" value="@ViewBag.SearchQuery" style="box-shadow:none;">
             </div>
-        </div>
+        </form>
         <!-- Filter button -->
         <div class="row">
             <div class="col-md-12 mt-3 ms-3 mb-4">
@@ -112,20 +103,38 @@
         <!-- Book List -->
         <div class="col-md-12 mx-2">
             <ul class="row mt-3 list-unstyled mx-auto" style="padding-left: 0;">
-                @for (int i = 0; i < pageData.Count; i++)
+                @if (pageData.Any())
                 {
-                    <li class="col-10 col-md-3 col-xl-2 mb-3 mx-3">
-                        <div class="card w-100">
-                            <a asp-action="ViewBooks" asp-controller="Book" class="text-decoration-none text-dark">
-                                <img class="card-img-top" height="250" width="100" src="~/img/default-book.jpg" alt="Card image cap">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">@pageData[i]</h5>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
+                    @foreach (var book in pageData)
+                    {
+                        <li class="col-10 col-md-3 col-xl-2 mb-3 mx-3">
+                            <div class="card w-100" style="height: 100%;">
+                                <a asp-action="ViewSingleBook" asp-controller="Book" asp-route-BookId="@book.BookId" class="text-decoration-none text-dark">
+                                    <img class="card-img-top" height="250" width="100" src="~/img/default-book.jpg" alt="Card image cap">
+                                    <div class="card-body text-center" style="height:60px;">
+                                        <h6 class="card-title ellipsis">@book.BookTitle</h6>
+                                    </div>
+                                    <div class="text-left mx-3 mb-2">
+                                        <hr style="margin-bottom:1px;">
+                                        <span class="text-dark" style="font-size:12px;">Author:
+                                            <span class="text-muted">@book.Author </span>
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    }
+                }
+                else
+                {
+                    <span class="text-white">No Books found </span>
                 }
             </ul>
         </div>
     </div>
 </div>
+
+
+
+
+

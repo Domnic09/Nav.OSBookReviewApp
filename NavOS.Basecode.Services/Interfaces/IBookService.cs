@@ -1,4 +1,5 @@
-﻿using NavOS.Basecode.Data;
+using NavOS.Basecode.Data;
+using NavOS.Basecode.Data.Models;
 using NavOS.Basecode.Data.Models;
 using NavOS.Basecode.Services.ServiceModels;
 using System;
@@ -18,5 +19,8 @@ namespace NavOS.Basecode.Services.Interfaces
 
         public bool UpdateBook(BookViewModel bookViewModel);
 
+
+        List<BookViewModel> GetBooks();
+        public BookViewModel GetBook(string BookId);
     }
 }

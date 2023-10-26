@@ -1,0 +1,105 @@
+﻿#navDemo {
+    background-color: #FFC119;
+    font-weight: bold;
+    width: auto !important;
+}
+
+#ratings i {
+    color: #FFC119;
+    font-size: 50px;
+    margin-right: 5px;
+}
+
+#rate-review p {
+    margin: 0;
+}
+
+.navSelect {
+    background-color: #FFC119;
+    font-weight: bolder;
+}
+
+body {
+    background-color: #212529F5;
+}
+
+#bgColor {
+    border: 1px solid white;
+}
+
+#details {
+    color: white;
+    padding: 20px;
+}
+
+#ratings {
+    display: flex;
+}
+
+#leftRightPadding {
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+textarea {
+    width: 100%;
+    background-color: transparent;
+    resize: none;
+    padding: 12px;
+    border: 0;
+}
+
+#summaryLabel, #reviewsLabel {
+    display: inline-block;
+    padding: 12px;
+    background-color: #FFC119;
+    color: #212529;
+    font-weight: bold;
+}
+
+#reviewsLabel {
+    background-color: #DA1B60;
+    color: white;
+}
+
+#send {
+    background-color: #3A6073;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    border: 0;
+}
+
+input {
+    padding: 10px;
+    background-color: #D9D9D9;
+    border: 0;
+}
+
+::placeholder {
+    color: black;
+}
+
+#buttonIcon button {
+    padding: 0;
+    text-decoration: none;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+#buttonIcon i {
+    color: lightgray;
+}
+
+@media screen and (max-width: 600px) {
+    #inputForm input {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 733px) {
+    #ratings {
+        float: left !important;
+    }
+}
