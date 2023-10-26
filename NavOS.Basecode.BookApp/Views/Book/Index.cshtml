@@ -1,0 +1,89 @@
+﻿@model List<NavOS.Basecode.Services.ServiceModels.BookViewModel>
+@{
+    ViewData["Title"] = "Home";
+}
+<style>
+    .ellipsis {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+</style>
+<div class="row mt-4 mx-1">
+    <!-- Latest Books-->
+    <div class="col-9 col-md-11 ms-5 px-2">
+        <a asp-action="ViewNewBooks" asp-controller="Book" class="btn btn-warning text-dark float-end mt-2" style="box-shadow:none;">View New Books</a>
+    </div>
+    <div class="col-md-3 d-flex justify-content-between">
+        <span class="h4" style="color:#FFC119; margin-top:-28px;">LATEST BOOKS</span>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="row">
+        <!-- Book List -->
+        <div class="col-md-12 mx-2">
+            <ul class="row mt-3 list-unstyled mx-auto" style="padding-left: 0;">
+                @foreach (var book in Model.OrderByDescending(book => book.AddedTime).Where(book => (DateTime.Now - book.AddedTime).TotalDays <= 14).Take(5))
+                {
+                <li class="col-10 col-md-3 col-xl-2 mb-3 mx-3">
+                    <div class="card w-100" style="height: 100%;">
+                        <a asp-action="ViewSingleBook" asp-controller="Book" asp-route-BookId="@book.BookId" class="text-decoration-none text-dark">
+                            <img class="card-img-top" height="250" width="100" src="~/img/default-book.jpg" alt="Card image cap">
+                            <div class="card-body text-center" style="height:60px;">
+                                <h6 class="card-title ellipsis">@book.BookTitle</h6>
+                            </div>
+                            <div class="text-left mx-3 mb-2">
+                                <hr style="margin-bottom:1px;">
+                                <span class="text-dark" style="font-size:12px;">
+                                    Author:
+                                    <span class="text-muted">@book.Author </span>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <!--View Top Books-->
+    <div class="row mt-2 mx-1">
+        <!-- Top Books-->
+        <div class="col-9 col-md-11 ms-5 px-2">
+            <a asp-action="ViewTopBooks" asp-controller="Book" class="btn btn-warning text-dark float-end mt-2" style="box-shadow:none;">View Top Books</a>
+        </div>
+        <div class="col-md-3 d-flex justify-content-between">
+            <span class="h4" style="color:#FFC119; margin-top:-28px;">TOP BOOKS</span>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Book List -->
+        <div class="col-md-12 mx-2">
+            <ul class="row mt-3 list-unstyled mx-auto" style="padding-left: 0;">
+                @foreach (var book in Model.OrderBy(book => book.AddedTime).Take(5))
+                {
+                <li class="col-10 col-md-3 col-xl-2 mb-3 mx-3">
+                    <div class="card w-100" style="height: 100%;">
+                        <a asp-action="ViewSingleBook" asp-controller="Book" asp-route-BookId="@book.BookId" class="text-decoration-none text-dark">
+                            <img class="card-img-top" height="250" width="100" src="~/img/default-book.jpg" alt="Card image cap">
+                            <div class="card-body text-center" style="height:60px;">
+                                <h6 class="card-title ellipsis">@book.BookTitle</h6>
+                            </div>
+                            <div class="text-left mx-3 mb-2">
+                                <hr style="margin-bottom:1px;">
+                                <span class="text-dark" style="font-size:12px;">
+                                    Author:
+                                    <span class="text-muted">@book.Author </span>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

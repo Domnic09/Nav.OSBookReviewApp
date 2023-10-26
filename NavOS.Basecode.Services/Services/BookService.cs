@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using NavOS.Basecode.Data.Interfaces;
 using NavOS.Basecode.Data.Models;
 using NavOS.Basecode.Data.Repositories;
@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using static NavOS.Basecode.Resources.Constants.Enums;
 using static System.Collections.Specialized.BitVector32;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+
 
 namespace NavOS.Basecode.Services.Services
 {
@@ -117,6 +118,54 @@ namespace NavOS.Basecode.Services.Services
             }
 
             return false;
+        public BookService(IBookRepository bookRepository)
+        {
+            _bookRepository = bookRepository;
+        }
+        //get specific book details based on the bookService models
+        public List<BookViewModel> GetBooks()
+        {
+            var data = _bookRepository.GetBooks().Select(s => new BookViewModel
+            {
+                BookId = s.BookId,
+                BookTitle = s.BookTitle,
+                Summary = s.Summary,
+                Author = s.Author,
+                Status = s.Status,
+                Genre = s.Genre,
+                Volume = s.Volume,
+                DateReleased = s.DateReleased,
+                AddedTime = s.AddedTime
+            })
+            .ToList();
+
+            return data;
+        }
+        public BookViewModel GetBook(string BookId)
+        {
+            var book = _bookRepository.GetBooks().FirstOrDefault(s => s.BookId == BookId);
+
+            if (book != null)
+            {
+                var bookViewModel = new BookViewModel
+                {
+                    BookId = book.BookId,
+                    BookTitle = book.BookTitle,
+                    Summary = book.Summary,
+                    Author = book.Author,
+                    Status = book.Status,
+                    Genre = book.Genre,
+                    Volume = book.Volume,
+                    DateReleased = book.DateReleased,
+                    AddedTime = book.AddedTime
+                };
+                return bookViewModel;
+            }
+            else
+            {
+                return null;
+            }
+
         }
 
     }

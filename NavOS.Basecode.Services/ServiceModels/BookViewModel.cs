@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +15,9 @@ namespace NavOS.Basecode.Services.ServiceModels
         public string Status { get; set; }
         public string Genre { get; set; }
         public int Volume { get; set; }
+        public string Volume { get; set; }
+        public DateTime DateReleased { get; set; }
+        public DateTime AddedTime { get; set; }
+
     }
 }

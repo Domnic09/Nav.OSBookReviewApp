@@ -1,6 +1,85 @@
-﻿@{
-    ViewData["Title"] = "BookSingleDetails";
-}
+﻿@using NavOS.Basecode.Services.ServiceModels;
+@model NavOS.Basecode.Services.ServiceModels.BookViewModel
 @{
-    <p class="text-white">Test page</p>
+    var reviews = ViewData["Reviews"] as List<NavOS.Basecode.Services.ServiceModels.ReviewViewModel>;
 }
+<div class="container mt-5">
+    <div class="w3-margin" id="bgColor">
+        <!-- Header Container -->
+        <div class="col-md-12 d-flex justify-content-between align-items-center"style="background-color: #FFC119; height: 35px;">
+            <div class="float-start">
+                <a class="text-center text-decoration-none ms-3">@Model.BookTitle</a>
+            </div>
+            <div class="float-end">
+                <a class="text-dark text-decoration-none fw-bold me-2" href="javascript:history.back()">Back</a>
+            </div>
+        </div>
+        <!--Book Info/Ratings-->
+        <div id="details">
+            <div class="w3-row w3-padding-30 w3-margin-bottom">
+                <div class="w3-col w3-padding-30" style="width:230px">
+                    <img src="~/img/default-book.jpg" class="w3-margin-bottom" height="250" width="210">
+                </div>
+                <div class="w3-col w3-padding-30" style="width:230px">
+                    <p id="book1" class="w3-margin-bottom w3-text-orange">@Model.BookTitle</p>
+                    <p>Author: @Model.Author</p>
+                    <p>Status: @Model.Status</p>
+                    <p>Genre: @Model.Genre</p>
+                    <p>Volume: @Model.Volume</p><br>
+                </div>
+                <div id="ratings" class="w3-right w3-padding-30 w3-col" style="width:200px">
+                    <div>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <div id="rate-review">
+                        <p id="pTopPadding"><b>8.5</b>/10</p>
+                        <small id="starReviews">666 Reviews</small>
+                    </div>
+                </div>
+            </div><br>
+            <!--SUMMARY-->
+            <h6 id="summaryLabel" class="w3-margin-bottom">SUMMARY</h6>
+
+            <div id="summary" class="w3-justify w3-border w3-padding">
+                <p>@Model.Summary</p>
+            </div><br><br>
+            <!--REVIEWS PARTIAL VIEW-->
+            @Html.Partial("AddReview", new ReviewViewModel { BookId = Model.BookId })
+
+            <!-- USER REVIEW LIST-->
+            <div id="leftRightPadding" class="w3-border w3-padding-32">
+                @if (reviews.Any(r => r.BookId == Model.BookId))
+                {
+                    @foreach (var review in reviews.Where(r => r.BookId == Model.BookId).OrderByDescending(r => r.DateReviewed))
+                    {
+                        <div class="w3-border w3-padding">
+                            <div class="w3-row">
+                                <div class="w3-col mb-2" style="width: 130px;">
+                                    <span id="reviewName" class="fw-bold">@review.UserName</span>
+                                </div>
+                                <span class="float-end">@review.DateReviewed.ToString("MMMM dd, yyyy hh:mm tt")</span>
+                                <div class="w3-col" style="width: 130px;">
+                                    @foreach (var star in Enumerable.Range(1, review.Rate))
+                                    {
+                                        <i class="fa fa-star yellow-star"></i>
+                                    }
+                                    @foreach (var star in Enumerable.Range(1, 5 - review.Rate))
+                                    {
+                                        <i class="fa fa-star"></i>
+                                    }
+                                </div>
+                            </div>
+                            <p class="w3-justify w3-text-white">@review.ReviewText</p>
+                        </div>
+                        <br>
+                    }
+                }
+                else
+                {
+                    <p>No reviews available.</p>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
