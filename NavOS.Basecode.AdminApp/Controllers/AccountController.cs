@@ -134,6 +134,7 @@ namespace NavOS.Basecode.AdminApp.Controllers
             await this._signInManager.SignOutAsync();
             TempData["SuccessMessage"] = "Bye " + this.UserName;
             return RedirectToAction("Login", "Account");
+            }
         }
     }
 }
