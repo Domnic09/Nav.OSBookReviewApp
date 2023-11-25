@@ -1,6 +1,7 @@
 ﻿@using NavOS.Basecode.Services.ServiceModels
 @model List<BookViewModel>
 
+
 @{
     ViewData["Title"] = "Book List";
     string[] headers = ViewBag.headers as string[];
@@ -13,6 +14,7 @@
     <h3><a asp-controller="Book" asp-action="AddBook" style="text-decoration: none; font-weight: bold;color: #FFC119">+ ADD BOOK</a></h3>
 </div>
 
+
 @* <form asp-controller="Book" asp-action="BookList" method="get" class="form-inline my-2 my-lg-0" style="margin-top: 40px">
     <div class="input-group">
         <input class="form-control mr-sm-2" name="searchQuery" id="searchQuery" type="search" placeholder="Search Book" aria-label="Search" style="border-radius: 5px;">&nbsp;
@@ -22,6 +24,7 @@
     </div>
 </form> *@
 
+@* fetch all books *@
 @if (Model.Any())
 {
     <div class="table-responsive">
