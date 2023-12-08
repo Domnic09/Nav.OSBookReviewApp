@@ -179,3 +179,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     -webkit-appearance: none;
     margin: 0;
 }
+.genre-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.navbar-nav .nav-link.nav-active{
+    color: #FFC119;
+}

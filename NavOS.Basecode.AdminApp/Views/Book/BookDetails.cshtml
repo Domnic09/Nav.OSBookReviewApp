@@ -16,9 +16,6 @@
             <div class="float-start">
                 <span class="float-start text-center ms-3 fst-italic fw-bold">Released | @Model.BookDetails.DateReleased.ToString("MMMM dd, yyyy")</span>
             </div>
-            <div class="float-end py-2">
-                <a class="text-dark text-decoration-none fw-bold me-2 btn btn-dark text-white" style="font-size:12px; box-shadow:none;" href="javascript:history.back()" type="button"><i class="bi bi-backspace"></i></a>
-            </div>
         </div>
         <!--Book Info/Ratings-->
         <div id="details">
@@ -35,7 +32,7 @@
                         <a href="#" class="genre-tag text-white fw-italic">@Model.BookDetails.Genre</a>
                     </p>
                     <p><span class="label-green fw-semibold">Pages:</span> @Model.BookDetails.Pages</p>
-                    <p><span class="label-green fw-semibold">Source:</span>&nbsp;<a href="@Model.BookDetails.Source" target="_blank" style="text-decoration:none;">More Details</a></p>
+                    <p><span class="label-green fw-semibold">Source:</span>&nbsp;<a href="@Model.BookDetails.Source" class="text-white"target="_blank">More Details</a></p>
                 </div>
                 <div class="w3-right w3-col" style="width: 246px">
                     <div id="rate-review">

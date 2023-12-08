@@ -6,30 +6,10 @@
     var (currentPage, totalItems, totalPages, startIndex, reviewNumber, reviewsToDisplay) =
         ReviewPaginationHelper.GetPagination(pageSize, Model, currentPageQueryString);
 }
-<style>
+@section styles {
+    <link rel="stylesheet" href="~/css/reviewdetails.css" />
+}
 
-    .pagination .page-item.active a {
-        background-color: #00A651;
-        box-shadow: none;
-    }
-
-    .pagination .page-item:not(.active) a {
-        background-color: #FFC119;
-        color: #000;
-        box-shadow: none;
-    }
-
-    .pagination .page-item a {
-        border: none;
-        box-shadow: none;
-    }
-
-    .pagination .page-item a:hover {
-        background-color: #00A651;
-        color: white;
-        box-shadow: none;
-    }
-</style>
 <div id="reviews-container">
     <!-- Pagination -->
     <div class="d-flex justify-content-end mb-2">

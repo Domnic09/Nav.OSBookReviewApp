@@ -1,0 +1,88 @@
+﻿.rating {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.stars {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: -17px;
+}
+
+.star {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(90deg, yellow 0%, gray 0%);
+    clip-path: polygon(50% 0%, 61.8% 38.2%, 100% 38.2%, 69.1% 61.8%, 80.3% 100%, 50% 77.3%, 19.7% 100%, 30.9% 61.8%, 0% 38.2%, 38.2% 38.2%);
+}
+
+.genre-tags {
+    margin-top: 10px;
+}
+
+.genre-tag {
+    position: relative;
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.genre-tag:hover {
+    text-decoration: underline;
+    color: #FFC119;
+}
+
+.star-rating {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+    .star-rating:hover {
+        color: yellow;
+    }
+
+.yellow-star {
+    color: yellow !important;
+}
+
+.btn-slide {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.trigger {
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #FFC119;
+    border: 2px solid #f39c12;
+    cursor: pointer;
+    transition: color 0.5s, background-color 0.5s;
+    position: relative;
+    z-index: 2;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #f39c12;
+    transition: left 0.5s ease;
+    z-index: 1;
+}
+
+.btn-slide:hover .slide {
+    left: 0;
+}
+
+.btn-slide:hover .trigger {
+    color: #000;
+    background-color: #FFC119;
+}
+
+

@@ -112,6 +112,13 @@
 
 @section scripts {
 	<script>
+		let navElements = document.getElementsByClassName("nav-admin");
+
+		// Loop through all elements with the class "nav-admin"
+		for (let i = 0; i < navElements.length; i++) {
+			navElements[i].classList.add("nav-active");
+		}
+
 		// Check for error message and display Toastr notification
 		var errorMessage = '@TempData["ErrorMessage"]';
 		if (errorMessage) {

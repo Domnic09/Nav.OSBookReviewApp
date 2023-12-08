@@ -26,3 +26,6 @@
 .UploadText {
     position: absolute;
 }
+.navbar-nav .nav-link.nav-active {
+    color: #FFC119;
+}

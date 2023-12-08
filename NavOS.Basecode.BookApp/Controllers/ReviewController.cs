@@ -59,7 +59,7 @@ namespace NavOS.Basecode.BookApp.Controllers
 
             string host = HttpContext.Request.Host.ToString();
             _reviewService.AddReview(review, host);
-
+            TempData["SuccessMessage"] = "Review Added Successfully.";
             return RedirectToAction("BookDetails", "Book", new { review.BookId });
         }
 

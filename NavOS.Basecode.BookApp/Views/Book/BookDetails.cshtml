@@ -1,44 +1,8 @@
 ﻿@model NavOS.Basecode.Services.ServiceModels.BookWithReviewViewModel
-
-<Style>
-    .rating {
-        display: flex;
-        align-items: center;
-        font-size: 16px;
-    }
-
-    .stars {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        margin-top: -17px;
-    }
-
-    .star {
-        width: 20px;
-        height: 20px;
-        background: linear-gradient(90deg, yellow 0%, gray 0%);
-        clip-path: polygon(50% 0%, 61.8% 38.2%, 100% 38.2%, 69.1% 61.8%, 80.3% 100%, 50% 77.3%, 19.7% 100%, 30.9% 61.8%, 0% 38.2%, 38.2% 38.2%);
-    }
-
-    .genre-tags {
-        margin-top: 10px;
-    }
-
-    .genre-tag {
-        position: relative;
-        text-decoration: none;
-        cursor: pointer;
-        color: inherit;
-        transition: background-color 0.3s, color 0.3s;
-    }
-
-    .genre-tag:hover {
-        text-decoration: underline;
-        color: #FFC119;
-    }
-
-</Style>
+@section styles {
+    <link rel="stylesheet" href="~/css/bookdetails.css" />
+    <link rel="stylesheet" href="~/css/reviewdetails.css" />
+}
 <div class="container mt-5">
     <div class="w3-margin" id="bgColor">
         <!-- Header Container -->
@@ -62,7 +26,7 @@
                         <a href="#" class="genre-tag text-white fw-italic">@Model.BookDetails.Genre</a>
                     </p>
                     <p><span class="label-green fw-semibold">Pages:</span> @Model.BookDetails.Pages</p>
-                    <p><span class="label-green fw-semibold">Source:</span>&nbsp;<a href="@Model.BookDetails.Source" target="_blank" style="text-decoration:none;">More Details</a></p>
+                    <p><span class="label-green fw-semibold">Source:</span>&nbsp;<a href="@Model.BookDetails.Source" target="_blank">More Details</a></p>
                 </div>
                 <div class="w3-right w3-col" style="width: 246px">
                     <div id="rate-review">

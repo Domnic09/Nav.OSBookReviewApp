@@ -6,18 +6,8 @@
 @section styles {
     <link rel="stylesheet" href="~/css/addEditBook.css" />
     <link rel="stylesheet" href="~/css/bookImageUploader.css" />
-    <script src="~/js/editBook.js"></script>
-    <style>
-        .genre-ellipsis {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-        }
-    </style>
-}
 
+}
 <div class="container">
     <div class="row bodyBorder">
         <div class="col-md-12">
@@ -55,11 +45,12 @@
                         <span asp-validation-for="Author" class="text-warning bookInputSpan"></span>
                         <div class="form-row">
                             <p>Status:</p>
-                            <select id="status" name="Status" asp-for="Status" required>
-                                <option value="" disabled selected>Select Status</option>
-                                <option value="Ongoing" class="text-dark">Ongoing</option>
-                                <option value="Completed" class="text-dark">Completed</option>
-                                <option value="Hiatus" class="text-dark">Hiatus</option>
+                            <select id="status" name="Status" asp-for="Status" required class="bg-transparent text-white">
+                                <option value="" disabled selected class="text-white bg-dark">Select Status</option>
+                                <option value="Ongoing" class="text-white bg-dark">Ongoing</option>
+                                <option value="Completed" class="text-white bg-dark">Completed</option>
+                                <option value="Hiatus" class="text-white bg-dark">Hiatus</option>
+                                <option value="Dropped" class="text-white bg-dark">Dropped</option>
                             </select>
                         </div>
                         <span asp-validation-for="Status" class="text-warning bookInputSpan"></span>
@@ -69,7 +60,7 @@
                         </div>
                         <span asp-validation-for="Pages" class="text-warning bookInputSpan"></span>
                         <div class="form-row">
-                            <p>Date:</p>
+                            <p>Date Released:</p>
                             <input type="date" class="form-control boxShadow" asp-for="DateReleased" />
                         </div>
                         <span asp-validation-for="DateReleased" class="text-warning bookInputSpan"></span>
@@ -127,10 +118,17 @@
 </div>
 @section scripts {
     <script>
+        let navElements = document.getElementsByClassName("nav-book");
+        // Loop through all elements with the class "nav-admin"
+        for (let i = 0; i < navElements.length; i++) {
+            navElements[i].classList.add("nav-active");
+        }
+
         var errorMessage = '@TempData["ErrorMessage"]';
         if (errorMessage) {
             toastr.error(errorMessage);
         }
     </script>
+    <script src="~/js/editBook.js"></script>
     <script src="~/js/bookImagePreview.js"></script>
 }

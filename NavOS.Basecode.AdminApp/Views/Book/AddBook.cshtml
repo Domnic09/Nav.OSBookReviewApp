@@ -37,11 +37,12 @@
                                     <span asp-validation-for="Author" class="text-warning bookInputSpan"></span>
                                     <div class="form-row">
                                         <p>Status:</p>
-                                        <select id="status" name="Status" asp-for="Status" required>
-                                            <option value="" disabled selected>Select Status</option>
-                                            <option value="Ongoing" class="text-dark">Ongoing</option>
-                                            <option value="Completed" class="text-dark">Completed</option>
-                                            <option value="Hiatus" class="text-dark">Hiatus</option>
+                                        <select id="status" name="Status" asp-for="Status" required class="bg-transparent text-white">
+                                            <option value="" disabled selected class="text-white bg-dark">Select Status</option>
+                                            <option value="Ongoing" class="text-white bg-dark">Ongoing</option>
+                                            <option value="Completed" class="text-white bg-dark">Completed</option>
+                                            <option value="Hiatus" class="text-white bg-dark">Hiatus</option>
+                                            <option value="Dropped" class="text-white bg-dark">Dropped</option>
                                         </select>
                                     </div>
                                     <span asp-validation-for="Status" class="text-warning bookInputSpan"></span>
@@ -51,8 +52,8 @@
                                     </div>
                                     <span asp-validation-for="Pages" class="text-warning bookInputSpan"></span>
                                     <div class="form-row">
-                                        <p>Date:</p>
-                                        <input type="date" class="form-control" asp-for="DateReleased" />
+                                        <p>Date Released:</p>
+                                        <input type="date" class="form-control" asp-for="DateReleased" value=""/>
                                     </div>
                                     <span asp-validation-for="DateReleased" class="text-warning bookInputSpan"></span>
                                     <div class="form-row">
@@ -111,7 +112,11 @@
 
 @section scripts {
     <script>
-        let nav = document.getElementById("AddBook");
-        nav.classList.add("active");
+        let navElements = document.getElementsByClassName("nav-book");
+
+        // Loop through all elements with the class "nav-admin"
+        for (let i = 0; i < navElements.length; i++) {
+            navElements[i].classList.add("nav-active");
+        }
     </script>
 }

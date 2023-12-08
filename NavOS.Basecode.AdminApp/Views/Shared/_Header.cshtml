@@ -18,7 +18,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color:#111111">
         <div class="container-fluid">
             <a asp-action="Index" asp-controller="Book">
-                <img src="~/img/bookhub-logo.png" style="width: 100px; height: auto; margin-right:85px;" />
+                <img src="~/img/bookhub-logo-final.png" style="width: 100px; height: auto; margin-right:50px;" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -28,11 +28,11 @@
                     <li class="nav-item me-5 @IsActive("Book", "Index")">
                         <a class="nav-link @IsActive("Book", "Index")" asp-action="Index" asp-controller="Book">Home</a>
                     </li>
-                    <li class="nav-item me-5 @IsActive("Book", "BookList")">
-                        <a class="nav-link @IsActive("Book", "BookList")" asp-action="BookList" asp-controller="Book" id="AddBook">Book List</a>
+                    <li class="nav-item me-5 @IsActive("Book", "BookList") nav-book">
+                        <a class="nav-link @IsActive("Book", "BookList") nav-book" asp-action="BookList" asp-controller="Book">Book List</a>
                   </li>
-                    <li class="nav-item me-5 @((Role != "Master Admin") ? "d-none" : "") @IsActive("Admin", "AdminList")">
-                        <a class="nav-link @IsActive("Admin", "AdminList")" asp-action="AdminList" asp-controller="Admin">
+                    <li class="nav-item me-5 @((Role != "Master Admin") ? "d-none" : "") @IsActive("Admin", "AdminList") nav-admin">
+                        <a class="nav-link @IsActive("Admin", "AdminList") nav-admin" asp-action="AdminList" asp-controller="Admin">
                             Admin List
                         </a>
                     </li>
@@ -67,14 +67,14 @@
                                  height="80"
                                  width="80">
                         </div>
-                        <div class="dropdown">
+                        <div class="dropdown bg-dark">
                             <ul>
-                                <a asp-action="AdminSetting" asp-controller="Admin" class="text-decoration-none text-dark">
+                                <a asp-action="AdminSetting" asp-controller="Admin" class="text-decoration-none text-white">
                                     <li>
                                         <i class="fa-solid fa-gear me-3"></i>Settings
                                     </li>
                                 </a>
-                                <a asp-action="SignOutUser" asp-controller="Account" class="text-decoration-none text-dark">
+                                <a asp-action="SignOutUser" asp-controller="Account" class="text-decoration-none text-white">
                                     <li>
                                         <i class="fas fa-right-from-bracket me-3"></i>Logout
                                     </li>

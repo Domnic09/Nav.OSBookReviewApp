@@ -72,6 +72,7 @@ label.btn {
 
 html:not(.dark-style) .account-settings-links .list-group-item.active {
     background: transparent !important;
+    color: #FFC119 !important;
 }
 
 .account-settings-multiselect ~ .select2-container {
